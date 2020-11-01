@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let a = 0,
     b = 0,
     result = 0,
- str;  
+ str = '';  
   elements.addEventListener('click', (e) => {
     const target = e.target;
   
@@ -17,25 +17,20 @@ window.addEventListener("DOMContentLoaded", () => {
       answers.textContent = input;
     }
     if (target.classList.contains('plus') || target.classList.contains('mines')){
-      str = target.textContent;
+      if (str != '') {
+         plus(a, b, str);
+        str = target.textContent;
+        answers.textContent = result;
+      }
+     str = target.textContent;
       if (a === 0) {
         a = parseInt(input);
         input = '';
-        console.log('true');
-        plus(a, b, target.textContent);
       } else {
         b = parseInt(input);
         input = '';
-     
-        console.log('else');
-        plus(a, b, target.textContent);
-        b = 0;
       }
       
-      
-        
-  
-      console.log(result);
     }
 
  
