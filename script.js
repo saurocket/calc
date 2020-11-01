@@ -1,91 +1,59 @@
-
-window.addEventListener("DOMContentLoaded", () =>{
-
-
-const   
-        answers = document.querySelector('.answers'),
-        elements = document.querySelector('.wrapper_main');
-let tepNum = 0,
-ans;
-    //Chenge Options
-    answers.textContent = tepNum;
-        const getElem = () => {
-           elements.addEventListener('click', (event) =>{
-
-         
-
-
-
-
-               let temp;
-                const target = event.target;
-                console.log(target.textContent);
-                temp = target.textContent;
-if (tepNum == 0){
-    tepNum = '';
-}
-
-                tepNum = tepNum + target.textContent;
-                console.log(tepNum);
-                answers.textContent = tepNum;
-               
-                if(target && target.classList.contains('result')){
-                    console.log(tepNum);
-                    ans = eval(tepNum.substring(0, str.length - 1));
-                    console.log(ans);
-                    answers.innerHTML = ans;
-                } 
-
-
-
-
-
-
-        });
+window.addEventListener("DOMContentLoaded", () => {
+  "use strict";
+  const answers = document.querySelector(".answers"),
+    elements = document.querySelector(".wrapper_main");
+  let input = '';
+  let a = 0,
+    b = 0,
+    result = 0,
+ str;  
+  elements.addEventListener('click', (e) => {
+    const target = e.target;
+  
+    
+    //get number
+    if (target && target.classList.contains('number')) {
+      input += target.textContent;
+      answers.textContent = input;
+    }
+    if (target.classList.contains('plus') || target.classList.contains('mines')){
+      str = target.textContent;
+      if (a === 0) {
+        a = parseInt(input);
+        input = '';
+        console.log('true');
+        plus(a, b, target.textContent);
+      } else {
+        b = parseInt(input);
+        input = '';
+     
+        console.log('else');
+        plus(a, b, target.textContent);
+        b = 0;
+      }
+      
+      
+        
+  
+      console.log(result);
     }
 
- //Chenge Options 
+ 
+  
+  
+  });
 
+  function plus(aa, bb, option) {
+    
+    
+    result = eval(`${aa}${option}${bb}`);
+    
+    a = result;
 
-
-
-
-
-const getNumber = (target) =>{
-    dataBase.push(target.textContent);
-    number = dataBase.join().replace(/\D+/g,"");
-}
-
-
-
-// const plus = (a, b) =>{
-//     console.log(a,b);
-//     console.log(tempMas);
-// dataBase = [];
-// tempMas = []; 
-//     number =  a + b;
-//     tempMas.push(parseInt(number));
-// }
-// const minus = (a, b) =>{
-//     console.log(a,b);
-//     console.log(tempMas);
-//     dataBase = [];
-//     tempMas = [];
-//     number =  a - b;
-//     tempMas.push(parseInt(number));
-//     }
-
-const showAnsers = (num) =>{
-    answers.textContent = num;
-
-
-}
-
-getElem();
-
-
+  }
 
 
 
 
 });
+
